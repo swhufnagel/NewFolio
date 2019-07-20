@@ -1,8 +1,9 @@
 <template>
   <nav>
-    <v-navigation-drawer v-model="drawer" clipped right app>
+    <v-navigation-drawer v-model="drawer" clipped dark right app>
       <v-list dense>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#landing', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
@@ -10,7 +11,8 @@
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#sec2', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>info</v-icon>
           </v-list-tile-action>
@@ -18,7 +20,8 @@
             <v-list-tile-title>About</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#sec3', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>assessment</v-icon>
           </v-list-tile-action>
@@ -26,7 +29,8 @@
             <v-list-tile-title>Skills</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#sec4', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
           </v-list-tile-action>
@@ -34,7 +38,8 @@
             <v-list-tile-title>Portfolio</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#sec5', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>description</v-icon>
           </v-list-tile-action>
@@ -42,7 +47,8 @@
             <v-list-tile-title>Resume</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click>
+        <v-list-tile @click="$vuetify.goTo('#sec6', 
+      { offset: 0 })">
           <v-list-tile-action>
             <v-icon>contact_mail</v-icon>
           </v-list-tile-action>
@@ -52,10 +58,23 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar clipped-left dark app>
+    <v-toolbar dark app>
+      <v-btn flat @click="$vuetify.goTo('#landing', 
+      { offset: 5 })">
+        <v-toolbar-title id="#myName">Sean Hufnagel</v-toolbar-title>
+      </v-btn>
+      <v-btn flat @click="$vuetify.goTo('#sec2', 
+      { offset: 0 })">About</v-btn>
+      <v-btn flat @click="$vuetify.goTo('#sec3', 
+      { offset: 0 })">Skills</v-btn>
+      <v-btn flat @click="$vuetify.goTo('#sec4', 
+      { offset: 0 })">Portfolio</v-btn>
+      <v-btn flat @click="$vuetify.goTo('#sec5', 
+      { offset: 0 })">Resume</v-btn>
+      <v-btn flat @click="$vuetify.goTo('#sec6', 
+      { offset: 0 })">Contact</v-btn>
       <v-spacer></v-spacer>
-      <v-toolbar-title>Sean Hufnagel</v-toolbar-title>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon fixed right app @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
   </nav>
 </template>
@@ -66,7 +85,21 @@ export default {
     drawer: null
   }),
   props: {
-    source: String
+    source: String,
+    isShrunk: Boolean
+  },
+  watch: {
+    drawer: function(val) {
+      console.log(val);
+      return val && this.isShrunk === true;
+    }
   }
 };
 </script>
+
+<style scoped>
+#myName {
+  color: purple;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+}
+</style>

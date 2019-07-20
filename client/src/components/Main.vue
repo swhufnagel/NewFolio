@@ -4,14 +4,18 @@
       <v-parallax
         id="parralax"
         src="https://scontent.fapa1-1.fna.fbcdn.net/v/t1.0-9/13438952_10157027950280335_1023770913506391617_n.jpg?_nc_cat=108&_nc_oc=AQkvq7F2nFEH9MyJhSqjfjwnOKgVfQ8Oh1jKpch29B9e3TtlojyAXuiG8JSIXAu_gUPvJxRDiNQWkO5bLNyxyVh2&_nc_ht=scontent.fapa1-1.fna&oh=8d8d8178e7f921e8e2511c7304f65439&oe=5DBF5CA4"
-        style="height: 93%; opacity:0.7;"
+        style="height: 100%; opacity:0.7;"
       >
         <div>
           <h1 id="welcome">Welcome to my Portfolio</h1>
-          <!-- <div id="my-div">Sean Hufnagel</div> -->
+          <div id="my-div">
+            <span v-bind:class="{active: isActive}" v-on:click="addActiveClass">A</span>
+            Sean Hufnagel
+          </div>
           <h2 id="uxui">User Experience / User Interface</h2>
           <h3 id="design">Designer / Developer</h3>
           <p id="learn">Learn about me!</p>
+          <font-awesome-icon icon="coffee"></font-awesome-icon>
         </div>
       </v-parallax>
     </div>
@@ -37,8 +41,14 @@
       </div>
     </div>
     <div id="sec3">
-      <h1>Skills</h1>
-      <div id="skillBox"></div>
+      <v-flex id="skillsText">Skills</v-flex>
+      <div id="skillBox">
+        <v-parallax
+          id="skillsBack"
+          src="https://www.chainimage.com/images/apple-mac-os-x-lion-wallpapers-hd-desktop-wallpapers-pink-forest.jpg"
+          style="height: 700px; opacity:0.8;"
+        ></v-parallax>
+      </div>
     </div>
     <div id="sec4">
       <h1>Portfolio</h1>
@@ -46,9 +56,11 @@
     </div>
     <div id="sec5">
       <h1>Resume</h1>
-      <div id="resume"></div>
+      <div id="resume">
+        <v-img src="require('@/../../public/assets/photos/Sean Hufnagel - Resume.pdf')"></v-img>
+      </div>
     </div>
-    <div id="sec5">
+    <div id="sec6">
       <h1>Contact</h1>
       <div id="resume"></div>
     </div>
@@ -60,16 +72,22 @@
 <script>
 export default {
   data: () => ({
-    drawer: null
+    drawer: null,
+    isActive: true
   }),
   props: {
     source: String
   },
+  methods: {
+    addActiveClass: function() {
+      return (this.isActive = !this.isActive);
+    }
+  },
   mounted() {
-    let animationScript = document.createElement("script");
-    animationScript.setAttribute("src", "../../public/assets/js/animation.js");
-    animationScript.async = true;
-    document.head.appendChild(animationScript);
+    if (window.innerWidth < 700) {
+      // this.$router.push("HelloWorld");
+      console.log("Mobile");
+    }
   }
 };
 </script>
@@ -78,8 +96,21 @@ export default {
 #sec2,
 #sec3,
 #sec4,
-#sec5 {
+#sec5,
+#sec6 {
+  width: 110%;
+  position: relative;
+  right: 3%;
   height: 700px;
+}
+#sec2 {
+  background-color: rgba(211, 211, 211, 0.411) !important;
+}
+#sec3 {
+  /* background-color: rgba(255, 186, 58, 0.692); */
+}
+#sec6 {
+  background-color: rgba(11, 11, 88, 0.479);
 }
 h1,
 p {
@@ -96,6 +127,17 @@ p {
 #learn {
   color: black;
   text-align: center;
+}
+#skillsBack {
+  margin-top: -90px;
+  z-index: 0;
+}
+#skillsText {
+  z-index: 9999;
+  color: black;
+  opacity: 0.9;
+  text-align: center;
+  font-size: 36px;
 }
 #welcome {
   text-align: center;

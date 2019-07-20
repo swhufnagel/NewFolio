@@ -7,7 +7,11 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(faUserSecret)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(Vuetify)
 
 Vue.config.productionTip = false
