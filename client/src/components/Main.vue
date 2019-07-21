@@ -57,33 +57,71 @@
               </v-card-title>
 
               <v-list>
-                <v-list-tile>
+                <v-list-tile class="skillArea">
                   <v-list-tile-content>
                     <v-list-tile-title class="skillTitle">HTML/CSS</v-list-tile-title>
+                    <v-flex class="iconList" md12 s6>
+                      <i class="devicon-bootstrap-plain-wordmark colored"></i>
+                      <i class="devicon-html5-plain-wordmark colored"></i>
+                      <i class="devicon-css3-plain-wordmark colored"></i>
+                      <i class="devicon-react-original"></i>
+                      <i class="devicon-sass-original colored"></i>
+                      <i class="devicon-foundation-plain colored"></i>
+                    </v-flex>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-divider></v-divider>
-                <v-list-tile>
+                <v-list-tile class="skillArea">
                   <v-list-tile-content>
                     <v-list-tile-title class="skillTitle">Javascript</v-list-tile-title>
+                    <v-flex class="iconList" md12 s6>
+                      <i class="devicon-javascript-plain colored"></i>
+                      <i class="devicon-react-original colored"></i>
+                      <i class="devicon-vuejs-plain"></i>
+                      <i class="devicon-jquery-plain-wordmark"></i>
+                      <i class="devicon-nodejs-plain-wordmark colored"></i>
+                    </v-flex>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-divider></v-divider>
-                <v-list-tile>
+                <v-list-tile class="skillArea">
                   <v-list-tile-content>
                     <v-list-tile-title class="skillTitle">Back-End</v-list-tile-title>
+                    <v-flex class="iconList" md12 s6>
+                      <i class="devicon-express-original-wordmark colored"></i>
+                      <i class="devicon-mysql-plain-wordmark colored"></i>
+                      <i class="devicon-mongodb-plain-wordmark colored"></i>
+                      <i class="devicon-nodejs-plain colored"></i>
+                      <i class="devicon-sequelize-plain-wordmark colored"></i>
+                      <i class="devicon-heroku-original-wordmark colored"></i>
+                      <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+                    </v-flex>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-divider></v-divider>
-                <v-list-tile>
+                <v-list-tile class="skillArea">
                   <v-list-tile-content>
                     <v-list-tile-title class="skillTitle">Design</v-list-tile-title>
+                    <v-flex class="iconList" md12 s6>
+                      <i class="devicon-photoshop-plain"></i>
+                      <i class="devicon-gimp-plain colored"></i>
+                      <i class="devicon-illustrator-plain colored"></i>
+                    </v-flex>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-divider></v-divider>
-                <v-list-tile>
+                <v-list-tile class="skillArea">
                   <v-list-tile-content>
                     <v-list-tile-title class="skillTitle">Other</v-list-tile-title>
+                    <v-flex class="iconList" md12 s6>
+                      <i class="devicon-babel-plain colored"></i>
+                      <i class="devicon-github-plain colored"></i>
+                      <i class="devicon-gitlab-plain colored"></i>
+                      <i class="devicon-mocha-plain colored"></i>
+                      <i class="devicon-slack-plain colored"></i>
+                      <i class="devicon-visualstudio-plain colored"></i>
+                      <i class="devicon-webpack-plain colored"></i>
+                    </v-flex>
                   </v-list-tile-content>
                 </v-list-tile>
               </v-list>
@@ -97,17 +135,15 @@
       <div id="projectBox">
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
-            <template v-for="(item, index) in items">
+            <template v-for="(item,index) in items">
               <v-list-tile :key="index" xs3>
                 <v-flex>
                   <v-card>
                     <v-img :src="item.image" aspect-ratio="2.75"></v-img>
-
-                    <v-card-title v-bind="item.title"></v-card-title>
-                    <div>
-                      <div>{{ item.text }}</div>
-                    </div>
-
+                    <v-list-tile-content>
+                      <v-card-title v-bind="item.title">{{item.title}}</v-card-title>
+                      <v-list-tile-sub-title>{{ item.text }}</v-list-tile-sub-title>
+                    </v-list-tile-content>
                     <v-card-actions>
                       <v-btn flat color="orange">Code</v-btn>
                       <v-btn flat color="orange">Github</v-btn>
@@ -238,6 +274,18 @@ h1,
 p {
   text-align: center;
 }
+
+.skillArea {
+  height: 115px;
+  background-color: blue(255, 255, 255, 0) !important;
+}
+.iconList {
+  margin-top: -1%;
+}
+[class*=" devicon-"],
+[class^="devicon-"] {
+  font-size: 2rem;
+}
 .skillTitle {
   text-align: center;
 }
@@ -245,10 +293,10 @@ p {
   content: "";
   position: absolute;
   text-align: center;
-  left: 45%;
+  left: 46.5%;
   bottom: 0;
   height: 1px;
-  width: 10%; /* or 100px */
+  width: 80px; /* or 100px */
   border-bottom: 1px solid gray;
 }
 #uxui {
