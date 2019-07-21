@@ -19,7 +19,7 @@
         </div>
       </v-parallax>
     </div>
-    <div id="sec2">
+    <div id="about">
       <h1>About</h1>
       <div></div>
       <div>
@@ -40,29 +40,117 @@
         </p>
       </div>
     </div>
-    <div id="sec3">
-      <v-flex id="skillsText">Skills</v-flex>
+    <div id="skills">
       <div id="skillBox">
         <v-parallax
           id="skillsBack"
           src="https://www.chainimage.com/images/apple-mac-os-x-lion-wallpapers-hd-desktop-wallpapers-pink-forest.jpg"
           style="height: 700px; opacity:0.8;"
-        ></v-parallax>
+        >
+          <v-flex></v-flex>
+          <v-container>
+            <v-card>
+              <v-card-title class="green lighten-2">
+                <span class="headline white--text">Skills</span>
+
+                <v-spacer></v-spacer>
+              </v-card-title>
+
+              <v-list>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title class="skillTitle">HTML/CSS</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+                <v-divider></v-divider>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title class="skillTitle">Javascript</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+                <v-divider></v-divider>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title class="skillTitle">Back-End</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+                <v-divider></v-divider>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title class="skillTitle">Design</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+                <v-divider></v-divider>
+                <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-title class="skillTitle">Other</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+            </v-card>
+          </v-container>
+        </v-parallax>
       </div>
     </div>
-    <div id="sec4">
+    <div id="portfolio">
       <h1>Portfolio</h1>
-      <div id="projectBox"></div>
-    </div>
-    <div id="sec5">
-      <h1>Resume</h1>
-      <div id="resume">
-        <v-img src="require('@/../../public/assets/photos/Sean Hufnagel - Resume.pdf')"></v-img>
+      <div id="projectBox">
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <template v-for="(item, index) in items">
+              <v-list-tile :key="index" xs3>
+                <v-flex>
+                  <v-card>
+                    <v-img :src="item.image" aspect-ratio="2.75"></v-img>
+
+                    <v-card-title v-bind="item.title"></v-card-title>
+                    <div>
+                      <div>{{ item.text }}</div>
+                    </div>
+
+                    <v-card-actions>
+                      <v-btn flat color="orange">Code</v-btn>
+                      <v-btn flat color="orange">Github</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-flex>
+              </v-list-tile>
+            </template>
+          </v-layout>
+        </v-container>
       </div>
     </div>
-    <div id="sec6">
-      <h1>Contact</h1>
-      <div id="resume"></div>
+
+    <div id="contact">
+      <v-container fluid fill-height>
+        <v-layout align-center justify-center>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar dark color="gray">
+                <v-toolbar-title>Contact Me!</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field prepend-icon="person" name="login" label="Login" type="text"></v-text-field>
+                  <v-text-field
+                    id="password"
+                    prepend-icon="email"
+                    name="password"
+                    label="Password"
+                    type="password"
+                  ></v-text-field>
+                  <v-textarea name="input-7-1" box label="How Can I help you?" auto-grow value></v-textarea>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn dark color="black">Send</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </div>
   </v-content>
 </template>
@@ -73,7 +161,37 @@
 export default {
   data: () => ({
     drawer: null,
-    isActive: true
+    isActive: true,
+    items: [
+      {
+        image: "Brunch this weekend?",
+        title: "Pokemon Battle",
+        subtitle:
+          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+      },
+      {
+        image: "Summer BBQ",
+        title: "Tunedea Music Finder",
+        subtitle: "Wish I could come, but I'm out of town this weekend."
+      },
+      {
+        image: "Rock Paper Scissor (Mutli-Player)",
+        title: "Sandra Adams",
+        subtitle: "Do you have Paris recommendations? Have you ever been?"
+      },
+      {
+        image: "Birthday gift",
+        title: "Gif Showcase",
+        subtitle:
+          "Have any ideas about what we should get Heidi for her birthday?"
+      },
+      {
+        image: "Recipe to try",
+        title: "NFL Trivia",
+        subtitle:
+          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
+      }
+    ]
   }),
   props: {
     source: String
@@ -93,28 +211,45 @@ export default {
 </script>
 
 <style scoped>
-#sec2,
-#sec3,
-#sec4,
-#sec5,
-#sec6 {
+#about,
+#skills,
+#portfolio {
   width: 110%;
   position: relative;
   right: 3%;
   height: 700px;
 }
-#sec2 {
+#contact {
+  width: 110%;
+  position: relative;
+  right: 3%;
+  height: 550px;
+}
+#about {
   background-color: rgba(211, 211, 211, 0.411) !important;
 }
-#sec3 {
+#skills {
   /* background-color: rgba(255, 186, 58, 0.692); */
 }
-#sec6 {
+#contact {
   background-color: rgba(11, 11, 88, 0.479);
 }
 h1,
 p {
   text-align: center;
+}
+.skillTitle {
+  text-align: center;
+}
+.skillTitle:before {
+  content: "";
+  position: absolute;
+  text-align: center;
+  left: 45%;
+  bottom: 0;
+  height: 1px;
+  width: 10%; /* or 100px */
+  border-bottom: 1px solid gray;
 }
 #uxui {
   text-align: center;
