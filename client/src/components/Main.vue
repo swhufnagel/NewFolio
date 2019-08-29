@@ -8,14 +8,10 @@
       >
         <div>
           <h1 id="welcome">Welcome to my Portfolio</h1>
-          <div id="my-div">
-            <span v-bind:class="{active: isActive}" v-on:click="addActiveClass">A</span>
-            Sean Hufnagel
-          </div>
+          <div id="my-div">Sean Hufnagel</div>
           <h2 id="uxui">User Experience / User Interface</h2>
           <h3 id="design">Designer / Developer</h3>
           <p id="learn">Learn about me!</p>
-          <font-awesome-icon icon="coffee"></font-awesome-icon>
         </div>
       </v-parallax>
     </div>
@@ -23,7 +19,7 @@
       <h1>About</h1>
       <div></div>
       <div>
-        <p>
+        <p id="aboutP">
           User-focused full stack web-developer that specializes in Javascript.
           Spent the last 5 years honing my technical skills to become a confident
           programmer, completing my Associates Degree in Computer Programming as
@@ -58,7 +54,7 @@
 
               <v-list>
                 <v-list-tile class="skillArea">
-                  <v-list-tile-content>
+                  <v-list-tile-content id="tryThis">
                     <v-list-tile-title class="skillTitle">HTML/CSS</v-list-tile-title>
                     <v-flex class="iconList" md12 s6>
                       <i class="devicon-bootstrap-plain-wordmark colored"></i>
@@ -72,7 +68,7 @@
                 </v-list-tile>
                 <v-divider></v-divider>
                 <v-list-tile class="skillArea">
-                  <v-list-tile-content>
+                  <v-list-tile-content id="tryThis">
                     <v-list-tile-title class="skillTitle">Javascript</v-list-tile-title>
                     <v-flex class="iconList" md12 s6>
                       <i class="devicon-javascript-plain colored"></i>
@@ -85,7 +81,7 @@
                 </v-list-tile>
                 <v-divider></v-divider>
                 <v-list-tile class="skillArea">
-                  <v-list-tile-content>
+                  <v-list-tile-content id="tryThis">
                     <v-list-tile-title class="skillTitle">Back-End</v-list-tile-title>
                     <v-flex class="iconList" md12 s6>
                       <i class="devicon-express-original-wordmark colored"></i>
@@ -100,7 +96,7 @@
                 </v-list-tile>
                 <v-divider></v-divider>
                 <v-list-tile class="skillArea">
-                  <v-list-tile-content>
+                  <v-list-tile-content id="tryThis">
                     <v-list-tile-title class="skillTitle">Design</v-list-tile-title>
                     <v-flex class="iconList" md12 s6>
                       <i class="devicon-photoshop-plain"></i>
@@ -111,7 +107,7 @@
                 </v-list-tile>
                 <v-divider></v-divider>
                 <v-list-tile class="skillArea">
-                  <v-list-tile-content>
+                  <v-list-tile-content id="tryThis">
                     <v-list-tile-title class="skillTitle">Other</v-list-tile-title>
                     <v-flex class="iconList" md12 s6>
                       <i class="devicon-babel-plain colored"></i>
@@ -136,21 +132,19 @@
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
             <template v-for="(item,index) in items">
-              <v-list-tile :key="index" xs3>
-                <v-flex>
-                  <v-card>
-                    <v-img :src="item.image" aspect-ratio="2.75"></v-img>
-                    <v-list-tile-content>
-                      <v-card-title v-bind="item.title">{{item.title}}</v-card-title>
-                      <v-list-tile-sub-title>{{ item.text }}</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                    <v-card-actions>
-                      <v-btn flat color="orange">Code</v-btn>
-                      <v-btn flat color="orange">Github</v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-flex>
-              </v-list-tile>
+              <v-flex :key="index">
+                <v-card id="projCards">
+                  <v-img id="icons" :src="item.image"></v-img>
+                  <v-list-tile-content id="projTitle">
+                    <v-card-title id="cardTitle" v-bind="item.title">{{item.title}}</v-card-title>
+                    <v-list-tile-sub-title>{{ item.text }}</v-list-tile-sub-title>
+                  </v-list-tile-content>
+                  <v-card-actions>
+                    <v-btn @click="openApp(index)" flat color="orange">App</v-btn>
+                    <v-btn @click="openCode(index)" flat color="orange">Github</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-flex>
             </template>
           </v-layout>
         </v-container>
@@ -191,41 +185,85 @@
   </v-content>
 </template>
 
-
 <script type="application/javascript" src="../../public/assets/js/animation.js"></script>
 <script>
+import pokemonIcon from "../../public/assets/photos/pokeomonicon.jpg";
+import rpsIcon from "../../public/assets/photos/rpsicon.png";
+import giphyIcon from "../../public/assets/photos/giphyicon.png";
+import nflIcon from "../../public/assets/photos/nflicon.png";
+import tunedeaIcon from "../../public/assets/photos/tunedeaicon.png";
+import friendIcon from "../../public/assets/photos/friendIcon.png";
+import burgerIcon from "../../public/assets/photos/burgerIcon.png";
+import mongoIcon from "../../public/assets/photos/mongoIcon.jpeg";
+import PostivismIcon from "../../public/assets/photos/postivismIcon.png";
+import SayHayIcon from "../../public/assets/photos/SayHayIcon.png";
+import amazonIcon from "../../public/assets/photos/amazonIcon.png";
+import xmenIcon from "../../public/assets/photos/xmenIcon.png";
+
 export default {
   data: () => ({
     drawer: null,
     isActive: true,
     items: [
       {
-        image: "Brunch this weekend?",
+        image: pokemonIcon,
         title: "Pokemon Battle",
-        subtitle:
-          "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+        appUrl: "https://swhufnagel.github.io/RPG-Game/",
+        codeUrl: "https://github.com/swhufnagel/RPG-Game"
       },
       {
-        image: "Summer BBQ",
-        title: "Tunedea Music Finder",
-        subtitle: "Wish I could come, but I'm out of town this weekend."
+        image: tunedeaIcon,
+        title: "Tunedea",
+        appUrl: "https://swhufnagel.github.io/Project-1/",
+        codeUrl: "https://github.com/swhufnagel/Project-1"
       },
       {
-        image: "Rock Paper Scissor (Mutli-Player)",
-        title: "Sandra Adams",
-        subtitle: "Do you have Paris recommendations? Have you ever been?"
+        image: rpsIcon,
+        title: `Rock Paper Scissor`,
+        appUrl: "https://swhufnagel.github.io/RPS-Multiplayer/",
+        codeUrl: "https://github.com/swhufnagel/RPS-Multiplayer"
       },
       {
-        image: "Birthday gift",
+        image: giphyIcon,
         title: "Gif Showcase",
-        subtitle:
-          "Have any ideas about what we should get Heidi for her birthday?"
+        appUrl: "https://swhufnagel.github.io/GifTastic/",
+        codeUrl: "https://github.com/swhufnagel/GifTastic"
       },
       {
-        image: "Recipe to try",
+        image: nflIcon,
         title: "NFL Trivia",
-        subtitle:
-          "We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
+        appUrl: "https://swhufnagel.github.io/TriviaGame/",
+        codeUrl: "https://github.com/swhufnagel/TriviaGame"
+      },
+      {
+        image: xmenIcon,
+        title: "Memory Game",
+        appUrl: "https://swhufnagel.github.io/Clicky-Game/",
+        codeUrl: "https://github.com/swhufnagel/clicky-game"
+      },
+      {
+        image: PostivismIcon,
+        title: "Postivism",
+        appUrl: "https://www.postivism.herokuapp.com",
+        codeUrl: "https://github.com/swhufnagel/Project2"
+      },
+      {
+        image: SayHayIcon,
+        title: "Say Hay",
+        appUrl: "https://testflight.apple.com/join/tO1A4iRa",
+        codeUrl: "https://github.com/swhufnagel/Project-3"
+      },
+      {
+        image: mongoIcon,
+        title: "Mongo Scraper",
+        appUrl: "https://swh-mongoscraper.herokuapp.com/",
+        codeUrl: "https://github.com/swhufnagel/MongoScraper"
+      },
+      {
+        image: burgerIcon,
+        title: "Burger Time",
+        appUrl: "https://burger-menu-swh.herokuapp.com/",
+        codeUrl: "https://github.com/swhufnagel/burger"
       }
     ]
   }),
@@ -235,6 +273,12 @@ export default {
   methods: {
     addActiveClass: function() {
       return (this.isActive = !this.isActive);
+    },
+    openApp: function(index) {
+      window.open(this.items[index].appUrl, "_blank");
+    },
+    openCode: function(index) {
+      window.open(this.items[index].codeUrl, "_blank");
     }
   },
   mounted() {
@@ -259,10 +303,24 @@ export default {
   width: 110%;
   position: relative;
   right: 3%;
-  height: 550px;
+  height: 700px;
+}
+#tryThis {
+  height: 200px;
+  overflow: none !important;
+  margin: auto;
 }
 #about {
   background-color: rgba(211, 211, 211, 0.411) !important;
+}
+#aboutP {
+  width: 70%;
+  text-align: center;
+  margin: auto;
+}
+#cardTitle {
+  text-align: center;
+  margin: auto;
 }
 #skills {
   /* background-color: rgba(255, 186, 58, 0.692); */
@@ -274,31 +332,39 @@ h1,
 p {
   text-align: center;
 }
-
+#icons {
+  height: 200px;
+  width: 200px;
+}
+#projTitle {
+  height: 30px;
+  margin-bottom: 0px;
+}
+#my-div {
+  text-align: center;
+  font-size: 60px;
+  font-family: cursive;
+}
 .skillArea {
   height: 115px;
   background-color: blue(255, 255, 255, 0) !important;
+  overflow: none;
 }
 .iconList {
-  margin-top: -1%;
+  margin: auto;
+  overflow: none;
 }
 [class*=" devicon-"],
 [class^="devicon-"] {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .skillTitle {
+  margin-top: 3%;
   text-align: center;
+  overflow: none;
+  text-decoration: underline;
 }
-.skillTitle:before {
-  content: "";
-  position: absolute;
-  text-align: center;
-  left: 46.5%;
-  bottom: 0;
-  height: 1px;
-  width: 80px; /* or 100px */
-  border-bottom: 1px solid gray;
-}
+
 #uxui {
   text-align: center;
   color: black;
@@ -321,6 +387,10 @@ p {
   opacity: 0.9;
   text-align: center;
   font-size: 36px;
+}
+#projCards {
+  margin-top: 10px;
+  width: 200px;
 }
 #welcome {
   text-align: center;

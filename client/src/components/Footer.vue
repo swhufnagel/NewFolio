@@ -10,5 +10,6 @@ export default {
   props: {
     source: String
   }
+  // eslint-disable-next-line
 };
 </script>

@@ -11,7 +11,6 @@
       href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
     />
 
-    <font-awesome-icon icon="user-secret" />
     <v-app>
       <page-header v-bind:isShrunk="isShrunk" />
       <main>
@@ -25,6 +24,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import PageHeader from "@/components/Header.vue";
 import PageFooter from "@/components/Footer.vue";
 export default {
