@@ -3,7 +3,7 @@
     <div id="landing">
       <v-parallax
         id="parralax"
-        src="https://scontent.fapa1-1.fna.fbcdn.net/v/t1.0-9/13438952_10157027950280335_1023770913506391617_n.jpg?_nc_cat=108&_nc_oc=AQkvq7F2nFEH9MyJhSqjfjwnOKgVfQ8Oh1jKpch29B9e3TtlojyAXuiG8JSIXAu_gUPvJxRDiNQWkO5bLNyxyVh2&_nc_ht=scontent.fapa1-1.fna&oh=8d8d8178e7f921e8e2511c7304f65439&oe=5DBF5CA4"
+        src="https://scontent.fapa1-1.fna.fbcdn.net/v/t1.0-9/13438952_10157027950280335_1023770913506391617_n.jpg?_nc_cat=108&_nc_oc=AQm8aDQ1zLSKiAf4ytvX5RHKlrAB4GMrb_jLmVp6q0565x_oeR1BRrx2GcZAhOunCid1Tn566YafNXw5v0o8ckpn&_nc_ht=scontent.fapa1-1.fna&oh=75c8758b5f5f5fc2bdfa99e38d5bf7c1&oe=5EFBC4A4"
         style="height: 100%; opacity:0.7;"
       >
         <div>
